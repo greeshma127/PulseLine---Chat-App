@@ -6,6 +6,14 @@ const socket = io("http://localhost:5000");
 
 const CONTACTS = ["Amy", "David", "John", "Jane"];
 
+const PROFILE_IMAGES = {
+  Amy: "https://ui-avatars.com/api/?name=Amy",
+  David: "https://ui-avatars.com/api/?name=David",
+  John: "https://ui-avatars.com/api/?name=John",
+  Jane: "https://ui-avatars.com/api/?name=Jane",
+};
+
+
 const getStoredMessages = () => {
   try {
     const data = localStorage.getItem("chatMessages");
@@ -101,6 +109,16 @@ export default function Chat() {
       (msg.receiver === username && msg.sender === activeContact)
   );
 
+  const handleClearChat = () => {
+  const filtered = messages.filter(
+    (msg) =>
+      msg.sender !== activeContact && msg.receiver !== activeContact
+  );
+  setMessages(filtered);
+  saveMessages(filtered); // if you save to localStorage or backend
+};
+
+
   if (!isLoggedIn) {
     return (
       <div className="login-container">
@@ -154,39 +172,54 @@ export default function Chat() {
               };
               
             return (
-              <div
-                key={contact}
-                className={`contact-1 ${
-                  activeContact === contact ? "active-contact" : ""
-                }`}
-                onClick={() => setActiveContact(contact)}
-              >
-                <div>
-                  <p>{contact}</p>
-                  <p className="last-message">
-                    <span>{lastMessage?.text || "No messages yet"}</span>
-                    <span className="msg-time">{lastMessage ? formatTime(lastMessage.id) : ""}</span>
-                  </p>
+                    <div
+        key={contact}
+        className={`contact-1 ${activeContact === contact ? "active-contact" : ""}`}
+        onClick={() => setActiveContact(contact)}
+      >
+        <div className="contact-content">
+          <div className="contact-info">
+            <img
+              src={PROFILE_IMAGES[contact]}
+              alt={contact}
+              className="profile-pic"
+            />
+            <div className="text-info">
+              <span className="contact-name">{contact}</span>
+              <p className="last-message">
+                <span>{lastMessage?.text || "No messages yet"}</span>
+                <span className="msg-time">
+                  {lastMessage ? formatTime(lastMessage.id) : ""}
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+                  );
+                })}
+                <div class="u">
+                  <p>Welcome, 
+                  {username}{" "}<br></br>
+                  <button onClick={handleLogout} className="logout-btn">
+                    Logout
+                  </button>
+                </p>
                 </div>
               </div>
-            );
-          })}
-          <p>
-            {username}{" "}
-            <button onClick={handleLogout} className="logout-btn">
-              Logout
-            </button>
-          </p>
-        </div>
 
         <div className="chat">
   <div className="box">
     {!activeContact ? (
-      <p style={{ padding: 20 }}>Select a contact to start chatting</p>
+      <p id="select" style={{ padding: 20 }}>Select a contact to start chatting</p>
     ) : (
       <>
-        <h3>{activeContact}</h3>
+        <div className="chat-header">
+          <h2 className="recipient-name">{activeContact}</h2>
+          <button className="clear-chat-btn" onClick={handleClearChat}>Clear Chat</button>
+        </div>
+
         <div className="messages-container">
           {filteredMessages.map((msg) => (
             <div
