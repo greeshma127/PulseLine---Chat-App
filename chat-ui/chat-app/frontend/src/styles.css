@@ -35,16 +35,38 @@ ul{
     line-height: 1;
 }
 
-nav ul li.logo {
+.logo {
     font-weight: bold;
     font-size: 1.5rem;
     cursor: default;
     font-family: "Kaushan Script", cursive;
+    margin-right: 30px
 }
 
 nav ul li:not(.logo) {
     cursor: pointer;
     font-size: large;
+}
+
+.logout-btn-nav {
+  background-color: #ff4d4d;
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  width: 100%;
+  text-align: left;
+}
+
+.logout-btn-nav:hover {
+  background-color: #ff1a1a;
+}
+
+.mobile-only {
+  display: none;
 }
 
 .container{
@@ -374,4 +396,178 @@ nav ul li.logo:hover {
 
 .clear-chat-btn:hover {
   background-color: #e60000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  transition: max-height 0.3s ease;
+}
+
+.desktop-only {
+  display: block;
+}
+
+/* For screens smaller than 768px (mobile devices) */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #4335A7;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 99;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .contacts {
+    max-width: 100%;
+    margin: 10px;
+    height: auto;
+  }
+
+  .chat {
+    padding: 10px;
+  }
+
+  .chat-container {
+    width: 100%;
+    height: 100%;
+    margin: 10px 0;
+  }
+
+  .input-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contact-1 {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .contact-info {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .text-info {
+    max-width: 100%;
+  }
+
+  .recipient-name {
+    font-size: 1.1rem;
+  }
+
+  .chat h3 {
+    font-size: 1.2rem;
+  }
+
+  .clear-chat-btn {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+
+  #select {
+    margin: 50px;
+    font-size: 1rem;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .contacts {
+    display: none;
+  }
+}
+
+/* For very small screens (phones < 480px) */
+@media (max-width: 480px) {
+  .login-container {
+    width: 90%;
+    padding: 30px 20px;
+  }
+
+  .login-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .chat-container {
+    padding: 10px;
+  }
+
+  .input-container input {
+    padding: 8px 40px 8px 10px;
+  }
+
+  .input-container button {
+    font-size: 14px;
+    padding: 4px 10px;
+  }
+
+  .chat-header h2 {
+    font-size: 1rem;
+  }
+
+  nav ul li {
+    font-size: 1rem;
+  }
+
+  nav ul li.logo {
+    font-size: 1.2rem;
+  }
 }

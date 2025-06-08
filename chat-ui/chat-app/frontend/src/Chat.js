@@ -30,6 +30,7 @@ const saveMessages = (messages) => {
 export default function Chat() {
   const [username, setUsername] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const [activeContact, setActiveContact] = useState(null);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -139,14 +140,45 @@ export default function Chat() {
   return (
     <>
       <nav>
-        <ul>
-          <li className="logo">PulseLine</li>
-          <li>Home</li>
-          <li>Chat</li>
-          <li>Contacts</li>
-          <li>Settings</li>
-          <li>Profile</li>
-        </ul>
+        <div className="nav-container">
+          <div className="logo">PulseLine</div>
+          <div className="hamburger" onClick={() => setShowMenu(!showMenu)}>
+            ☰
+          </div>
+          <ul className={showMenu ? "nav-links show" : "nav-links"}>
+            <li>Home</li>
+            <li>Chat</li>
+            <li>Contacts</li>
+            <li>Settings</li>
+            <li>Profile</li>
+            <li className="mobile-only chats-dropdown-wrapper">
+        <label htmlFor="chat-select" className="chat-label">
+          Chats ▼
+        </label>
+        <select
+          id="chat-select"
+          value={activeContact || ""}
+          onChange={(e) => setActiveContact(e.target.value)}
+        >
+          <option value="" disabled>
+          
+          </option>
+          {CONTACTS.filter((c) => c !== username).map((contact) => (
+            <option key={contact} value={contact}>
+              {contact}
+            </option>
+          ))}
+        </select>
+      </li>
+
+      {/* Logout button inside hamburger */}
+      <li className="mobile-only">
+        <button onClick={handleLogout} className="logout-btn">
+          Logout
+        </button>
+      </li>
+          </ul>
+        </div>
       </nav>
 
       <div className="container">
@@ -199,7 +231,7 @@ export default function Chat() {
 
                   );
                 })}
-                <div class="u">
+                <div class="u desktop-only">
                   <p>Welcome, 
                   {username}{" "}<br></br>
                   <button onClick={handleLogout} className="logout-btn">
