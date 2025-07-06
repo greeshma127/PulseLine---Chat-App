@@ -70,30 +70,30 @@ nav ul li:not(.logo) {
 }
 
 .container{
-    margin-top: 60px;
-    display: flex;
-    height: calc(100vh - 60px);
-    background-color:#4335A7;
+  margin-top: 60px;
+  display: flex;
+  height: calc(100vh - 60px);
+  background-color:#4335A7;
 }
 
 .chat{
-    background-color: #4335A7;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
-    justify-content: space-between;
+  background-color: #4335A7;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: space-between;
 }
 
 .chat > div {
-    display: flex;
-    flex-direction: column;  /* stack messages vertically */
+  display: flex;
+  flex-direction: column;  /* stack messages vertically */
 }
 
 
 .chat p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 .contacts{
@@ -126,30 +126,30 @@ nav ul li:not(.logo) {
 }
 
 .sender-msg {
-    justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 .sender-msg p {
-    background-color: #FF7F3E;
-    color: #333;
-    padding: 10px 15px;
-    border-radius: 15px 15px 15px 0;
-    max-width: 10%;
-    word-wrap: break-word;
+  background-color: #FF7F3E;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 15px 15px 15px 0;
+  max-width: 10%;
+  word-wrap: break-word;
 }
 
 .user-msg {
-    align-self: flex-end;
+  align-self: flex-end;
 }
 
 
 .user-msg p {
-    background-color: #80C4E9;
-    color: black;
-    padding: 10px 15px;
-    border-radius: 15px 15px 0 15px;
-    max-width: 60%;
-    word-wrap: break-word;
+  background-color: #80C4E9;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 15px 15px 0 15px;
+  max-width: 60%;
+  word-wrap: break-word;
 }
 
 .chat-container {
@@ -201,13 +201,14 @@ nav ul li:not(.logo) {
 }
 
 #user{
-    color: white;
+  color: white;
 }
 
 .msg-time{
-    margin-left: 120px;
-    flex-shrink: 0;
+  margin-left: 120px;
+  flex-shrink: 0;
 }
+
 .box {
   background-color: #FFF6E9;
   padding: 10px 0 30px 30px;
@@ -223,7 +224,6 @@ nav ul li:not(.logo) {
   max-width: 400px;
   margin: 0 auto; /* center horizontally */
 }
-
 
 .input-container input {
   width: 100%;

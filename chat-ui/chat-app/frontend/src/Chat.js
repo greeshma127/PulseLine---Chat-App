@@ -4,8 +4,9 @@ import "./styles.css";
 
 const socket = io("http://localhost:5000");
 
-const CONTACTS = ["Amy", "David", "John", "Jane"];
+const CONTACTS = ["Amy", "David", "John", "Jane"];  //users
 
+//profile images for users
 const PROFILE_IMAGES = {
   Amy: "https://ui-avatars.com/api/?name=Amy",
   David: "https://ui-avatars.com/api/?name=David",
